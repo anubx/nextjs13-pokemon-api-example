@@ -28,19 +28,23 @@ async function GetPokemon({ url }) {
     const image = data.sprites.front_default.toString()
     const id = data.id.toString()
     const name = data.name
+    const api = "./pokemon/"
+    const detailslink = api.concat(name)
+
     return (
         <div className="border-4 p-1 mt-8 rounded-xl border-purple-900">
             <div className="flex flex-col justify-center items-center w-72 lg:w-60 max-w-sm rounded-lg overflow-hidden shadow-lg bg-gradient-to-tr from-yellow-200 to-purple-500">
                 <Image
                     src={image}
+                    name={name}
                     alt={name}
                     width={120}
                     height={120}
                     priority="true"
                     />
                 <div className="p-2 w-full rounded-b-lg border-t-4 border-gray-900 text-yellow-300 bg-purple-600">
-                    <Link href={id}>
-                        <p className="text-center text-lg text-white">{name}</p>
+                    <Link href={detailslink}>
+                        <p className="text-center text-lg text-white capitalize">{name}</p>
                     </Link>
                 </div>
             </div>
