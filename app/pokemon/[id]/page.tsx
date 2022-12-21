@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 interface Props {
     params: {
         id: string;
@@ -6,6 +8,7 @@ interface Props {
 
 export default async function Job({ params }: Props) {
     const pokemon = await getPokemonDetails([params.id])
+
 
     return (
         <div className="my-12 h-screen bg-slate-900">
@@ -26,6 +29,11 @@ export default async function Job({ params }: Props) {
                 <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
                     <img src={pokemon.sprites.front_default} alt={pokemon.name} />
                 </div>
+                <Link href="/">
+                    <div className="flex text-white p-3 items-center justify-center rounded text-center w-56 bg-purple-500 hover:bg-purple-800">
+                        <span>Click here to go back</span>
+                    </div>
+                </Link>
             </div>
         </div>
     );
